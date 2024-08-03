@@ -21,4 +21,8 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: Package
-          path: staging  
+          path: webapp.war  
+      - uses: actions/download-artifact@v3
+        with:
+          name: Artifact
+          path: $GITHUB_WORKSPACE            
