@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up JDK 8
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '8'
           distribution: 'temurin'
@@ -18,11 +18,11 @@ jobs:
       - name: Build with Maven
         run: mvn -B install --file pom.xml  
       - run: mkdir staging && cp /home/runner/work/MavenProject/MavenProject/webapp/target/*.war staging
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Package
           path: staging/webapp.war  
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: Package
           path: $GITHUB_WORKSPACE            
